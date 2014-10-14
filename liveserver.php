@@ -33,9 +33,9 @@
          $connect = socket_read($client, 1024) or die("Could not read input\n");
         if ($connect != "CO")
         {
-         $destip = $connect
+            $destip = $connect;
         //read data from the incoming socket
-        //$destip = socket_read($client, 1024) or die("Could not read input\n");
+            //$destip = socket_read($client, 1024) or die("Could not read input\n");
         echo $destip;
             $ttl = socket_read($client, 1024) or die("Could not read input\n");
             echo $ttl;
