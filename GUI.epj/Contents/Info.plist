@@ -73,11 +73,26 @@ You may find this Quick Reference useful to begin programming:
 
 */
 
-$window = new Window(null, "FATj.Net", 500, 500, 500, 500);
+$window = new Window(null, "FATj.Net", 500, 500, 500, 250);
 $window-&gt;Center();
-$window-&gt;Connect(WBE_CLOSE, "quit");
+$window-&gt;Connect(WBE_CLOSE, "quit");&#13;
+&#13;
+new StaticText($window, "File path", 150, 20);&#13;
+$window-&gt;textCtrl1 = new TextCtrl($window, "", 150, 40, 200);&#13;
+new StaticText($window, "Transfer duration (in hours)", 150, 80);&#13;
+$window-&gt;textCtrl2 = new TextCtrl($window, "", 150, 100, 200);&#13;
+//$window, "title", y, x(, w) &#13;
+$button = new Button($window, "Launch !", 210, 150);&#13;
+$button-&gt;Connect(WBE_BUTTON_CLICKED, "launch");&#13;
+launch($window);
 
-App::Start();
+App::Start();&#13;
+&#13;
+function launch($window, $ctrl=null, $event=null)&#13;
+{&#13;
+	$window-&gt;textCtrl1-&gt;SetText("ex: /my_folder/myFile.txt");&#13;
+	$window-&gt;textCtrl2-&gt;SetText("ex: 18");&#13;
+}
 
 function quit($barr, $window, $event)
 {
@@ -95,12 +110,12 @@ function quit($barr, $window, $event)
 	<key>Use resource fork</key>
 	<false/>
 	<key>Window X</key>
-	<integer>18446744073709551611</integer>
+	<integer>18446744073709551614</integer>
 	<key>Window Y</key>
 	<integer>22</integer>
 	<key>Window width</key>
-	<integer>850</integer>
+	<integer>859</integer>
 	<key>Window height</key>
-	<integer>551</integer>
+	<integer>819</integer>
 </dict>
 </plist>
