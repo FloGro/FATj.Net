@@ -1,9 +1,11 @@
 <?php
     
     include_once('socket.php');
-    include_once('myip.php');    
+    include_once('myip.php');
+    include_once('IPScan.php');
     set_time_limit (0);
-    $ipservers = ["192.168.118.1","192.168.118.2","192.168.118.4"];
+    
+    $ipservers = initNetList();
     $ip = getIPs();
   //start loop to listen for incoming connections
     
@@ -20,11 +22,20 @@
         if(socket_getpeername($client , $address , $port))
         {
             echo "Client $address : $port is now connected to us. \n";
+        
+            
+            if (!in_array($address, $ipservers))
+                {
+               array_push($ipservers, $address);
+                }
             
         }
-        
+         $connect = socket_read($client, 1024) or die("Could not read input\n");
+        if ($connect != "CO")
+        {
+         $destip = $connect
         //read data from the incoming socket
-        $destip = socket_read($client, 1024) or die("Could not read input\n");
+        //$destip = socket_read($client, 1024) or die("Could not read input\n");
         echo $destip;
             $ttl = socket_read($client, 1024) or die("Could not read input\n");
             echo $ttl;
@@ -41,16 +52,18 @@
 {
         transitfilec($output2, $output1, $output);
 } else {
-        $nb = rand(0, 2);
+        $nb = rand(0, sizeof($ipservers));
         while ($ipservers[$nb] == $ip)
         {
-            $nb = rand(0, 2);
+            $nb = rand(0, sizeof($ipservers));
         }
         
    sleep(1);
        	transitfile($ipservers[$nb], $output2 ,$output1, $output);
 }
+        }
 sleep(1);
+        
 
     }
 socket_close($client);
