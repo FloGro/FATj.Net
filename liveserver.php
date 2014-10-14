@@ -4,7 +4,6 @@
     include_once('myip.php');    
     set_time_limit (0);
     $ipservers = ["192.168.118.1","192.168.118.2","192.168.118.4"];
-    $ipclient = "192.168.118.3";
     $ip = getIPs();
   //start loop to listen for incoming connections
     
@@ -41,8 +40,7 @@
 	if ($output1 <= "0")
 {
         transitfilec($output2, $output1, $output);
-	exit;
-}
+} else {
         $nb = rand(0, 2);
         while ($ipservers[$nb] == $ip)
         {
@@ -51,6 +49,7 @@
         
    sleep(1);
        	transitfile($ipservers[$nb], $output2 ,$output1, $output);
+}
 sleep(1);
 
     }
