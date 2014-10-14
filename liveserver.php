@@ -25,6 +25,8 @@
         }
         
         //read data from the incoming socket
+        $destip = socket_read($client, 1024) or die("Could not read input\n");
+        echo $destip;
             $ttl = socket_read($client, 1024) or die("Could not read input\n");
             echo $ttl;
             $ttl = $ttl - 2;
@@ -32,11 +34,13 @@
             // clean up input string
            $input = trim($input);
            echo "Client Message : ".$input."\n";
+        
             $output = $input;
             $output1 = $ttl;
-	if ($output1 <= "0") 
+        $output2 = $destip;
+	if ($output1 <= "0")
 {
-        transitfilec($ipclient, $output1, $output);
+        transitfilec($output2, $output1, $output);
 	exit;
 }
         $nb = rand(0, 2);
@@ -46,7 +50,7 @@
         }
         
    sleep(1);
-       	transitfile($ipservers[$nb], $output1, $output);
+       	transitfile($ipservers[$nb], $output2 ,$output1, $output);
 sleep(1);
 
     }
