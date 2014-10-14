@@ -1,5 +1,6 @@
 <?php
 include_once('socket.php');
+include_once('message.php');
 
 function testConnect($ipAddress) {
 if(!($sock = socket_create(AF_INET, SOCK_STREAM, 0))) {
