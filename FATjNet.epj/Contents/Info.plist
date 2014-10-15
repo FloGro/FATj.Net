@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Bundle ID</key>
-	<string></string>
+	<string>com.fatjnet.fatjnet</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.exvision.mpreview</string>
 	<key>CFBundleName</key>
@@ -15,7 +15,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>Current script</key>
-	<string>main</string>
+	<string>tewst</string>
 	<key>Description</key>
 	<string></string>
 	<key>CFBundleExecutable</key>
@@ -50,7 +50,6 @@ new StaticText($window, "Transfer duration (in hours)", 150, 180);&#13;
 $window-&gt;textCtrl2 = new TextCtrl($window, "", 150, 200, 200);&#13;
 $button = new Button($window, "Launch !", 210, 250);&#13;
 $button-&gt;Connect(WBE_BUTTON_CLICKED, "launch");&#13;
-launch($window);&#13;
 &#13;
 App::Start();&#13;
 &#13;
@@ -58,6 +57,7 @@ function launch($window, $ctrl=null, $event=null)&#13;
 {&#13;
 	$window-&gt;textCtrl1-&gt;SetText("ex: /my_folder/myFile.txt");&#13;
 	$window-&gt;textCtrl2-&gt;SetText("ex: 18");&#13;
+	include "script:///tewst";&#13;
 }&#13;
 &#13;
 function quit($barr, $window, $event)&#13;
@@ -66,6 +66,10 @@ function quit($barr, $window, $event)&#13;
 }&#13;
 &#13;
 ?&gt;</string>
+		<key>tewst</key>
+		<string>&lt;?php&#13;
+echo "HELLLO";&#13;
+ ?&gt;</string>
 	</dict>
 	<key>Main script</key>
 	<string>main</string>

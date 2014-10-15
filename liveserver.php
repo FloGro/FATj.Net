@@ -26,6 +26,7 @@
             
             if (!in_array($address, $ipservers))
             {
+                
                 array_push($ipservers, $address);
             }
             
@@ -39,10 +40,7 @@
         }
         else if ($connect != "CO")
         {
-            if (testConnect($address) == false && in_array($address,$ipservers)){
-                unset($ipservers[array_search($address,$ipservers)]);
-                sort($ipservers);
-            }
+        
             
             $destip = $connect;
             echo $destip;
@@ -71,7 +69,15 @@
                 {
                     $nb = rand(0, (sizeof($ipservers) - 1));
                 }
-                
+                while (testConnect($ipservers[$nb]) == false )
+               {
+                   if ($ipservers[$nb] != $ip) {
+                    unset($ipservers[array_search($ipservers[$nb],$ipservers)]);
+                    sort($ipservers);
+                   }
+                   $nb = rand(0, (sizeof($ipservers) - 1));
+                }
+                echo "CONNEXION " . $ipservers[$nb] . "\n";
                 sleep(1);
                 transitfile($ipservers[$nb], $output2 ,$output1, $output);
             }
