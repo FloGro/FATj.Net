@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Bundle ID</key>
+	<string>com.fatjnet.gui</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.exvision.mpreview</string>
+	<key>CFBundleName</key>
+	<string>GUI</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleVersion</key>
+	<string>0.1</string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
+	<key>Current script</key>
+	<string>main</string>
+	<key>Description</key>
+	<string></string>
+	<key>CFBundleExecutable</key>
+	<string>miniphp</string>
+	<key>Extensions</key>
+	<array>
+		<string>wxbinder</string>
+	</array>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon.icns</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.0.0</string>
+	<key>Organization</key>
+	<string>FATj.Net</string>
+	<key>Scripts</key>
+	<dict>
+		<key>main</key>
+		<string>&lt;?
+
+/*
+
+You have successfully created a new project.
+You may find this Quick Reference useful to begin programming:
+
+1. miniPHP Programming Manual is available at http://exvision.net/miniphp/manual
+
+2. Comments, questions, and problems: please post in our forum: http://exvision.net/forums
+
+3. The top script (named "main" by default) is the script that gets executed when you 
+   run your miniPHP application.
+
+4. To execute other scripts, you must include them from your main script using this format:
+   include "script:///ScriptName";
+
+5. To add graphics and other resources to your application, click "Resources" on the toolbar.
+   A folder will open in your Finder/Explorer that you can copy the resources to.
+   To use the resources that you placed in the folder from within your PHP code, use the 
+   resource protocol, which functions identically to the PHP file protocol. Examples:
+
+   - You place an image called "logo.png" in your Resources folder and want to display it 
+     on a window. This is the code you would use:
+     new StaticImage($window, "res:///logo.png", 0, 0);
+
+   - You place a textfile called "foo.bar" in your Resources folder and want to retrieve 
+     its contents. This is the code you would use:
+     $contents = file_get_contents("res:///foo.bar");
+
+6. The code that appears below this comment creates a simple window and starts the application.
+   Once you become comfortable with the basics of miniPHP, feel free to erase this comment and 
+   the stock code, and unleash your potential with miniPHP.
+
+*/
+
+$window = new Window(null, "FATj.Net", 500, 500, 500, 250);
+$window-&gt;Center();
+$window-&gt;Connect(WBE_CLOSE, "quit");&#13;
+&#13;
+new StaticText($window, "File path", 150, 20);&#13;
+$window-&gt;textCtrl1 = new TextCtrl($window, "", 150, 40, 200);&#13;
+new StaticText($window, "Transfer duration (in hours)", 150, 80);&#13;
+$window-&gt;textCtrl2 = new TextCtrl($window, "", 150, 100, 200);&#13;
+//$window, "title", y, x(, w) &#13;
+$button = new Button($window, "Launch !", 210, 150);&#13;
+$button-&gt;Connect(WBE_BUTTON_CLICKED, "launch");&#13;
+launch($window);
+
+App::Start();&#13;
+&#13;
+function launch($window, $ctrl=null, $event=null)&#13;
+{&#13;
+	$window-&gt;textCtrl1-&gt;SetText("ex: /my_folder/myFile.txt");&#13;
+	$window-&gt;textCtrl2-&gt;SetText("ex: 18");&#13;
+}
+
+function quit($barr, $window, $event)
+{
+	App::Quit();
+}
+
+?&gt;</string>
+	</dict>
+	<key>Main script</key>
+	<string>main</string>
+	<key>Splitter position</key>
+	<integer>159</integer>
+	<key>Support URL</key>
+	<string></string>
+	<key>Use resource fork</key>
+	<false/>
+	<key>Window X</key>
+	<integer>18446744073709551614</integer>
+	<key>Window Y</key>
+	<integer>22</integer>
+	<key>Window width</key>
+	<integer>859</integer>
+	<key>Window height</key>
+	<integer>819</integer>
+</dict>
+</plist>
