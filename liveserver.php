@@ -30,10 +30,12 @@
                 }
             
         }
-         $connect = socket_read($client, 1024) or die("Could not read input\n");
+         $connect = socket_read($client, 1024) or die("Could not read CONNECT\n");
         if ($connect == "FIN")
         {
-            $msg = socket_read($client, 1024) or die("Could not read input\n");
+            echo "TEST FIN";
+            sleep(1);
+            $msg = socket_read($client, 1024) or die("Could not read MESG\n");
         echo "MESSAGE RETOUR :" . $msg . "\n";
         }
         else if ($connect != "CO")
