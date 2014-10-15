@@ -33,10 +33,11 @@
          $connect = socket_read($client, 1024) or die("Could not read input\n");
         if ($connect != "CO")
         {
-            //if (testConnect($address) == false && in_array($address,$ipservers)){
-            // Faire Unset du tableau puis retrier le array
-            //}
+            if (testConnect($address) == false && in_array($address,$ipservers)){
+                unset($ipservers[array_search($address,$ipservers)]);
+                sort($ipservers);
             }
+            
             $destip = $connect;
         //read data from the incoming socket
             //$destip = socket_read($client, 1024) or die("Could not read input\n");
