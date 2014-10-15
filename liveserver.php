@@ -34,7 +34,7 @@
         $connect = socket_read($client, 1024) or die("Could not read CONNECT\n");
         if ($connect == "FIN")
         {
-            sleep(1);
+            usleep(5);
             $msg = socket_read($client, 1024) or die("Could not read MESG\n");
             echo "MESSAGE RETOUR :" . $msg . "\n";
         }
@@ -46,7 +46,7 @@
             echo $destip;
             $ttl = socket_read($client, 1024) or die("Could not read input\n");
             echo $ttl;
-            $ttl = $ttl - 3;
+            $ttl = $ttl - 1;
             $input = socket_read($client, 1024) or die("Could not read input\n");
             // clean up input string
             $input = trim($input);
@@ -78,12 +78,11 @@
                    $nb = rand(0, (sizeof($ipservers) - 1));
                 }
                 echo "CONNEXION " . $ipservers[$nb] . "\n";
-                sleep(1);
+                usleep(5);
                 transitfile($ipservers[$nb], $output2 ,$output1, $output);
             }
         }
-        sleep(1);
-        
+usleep(5);
         
     }
     socket_close($client);
