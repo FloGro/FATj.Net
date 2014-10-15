@@ -48,7 +48,7 @@
             echo $destip;
             $ttl = socket_read($client, 1024) or die("Could not read input\n");
             echo $ttl;
-            $ttl = $ttl - 2;
+            $ttl = $ttl - 3;
             $input = socket_read($client, 1024) or die("Could not read input\n");
             // clean up input string
             $input = trim($input);
