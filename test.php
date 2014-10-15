@@ -1,14 +1,17 @@
 <?php
 include_once('message.php');
 include_once('socket.php');
+include_once('IPScan.php');
 
-$sock = connect('10.104.30.70');
-$message = 'What ?';
-while(true) {
+var_dump(initNetList());
+$sock = connect('192.168.118.2');
+$myIP = "192.168.118.3";
+$TTL = '20';
+$message = "LE CAPSLOCK TUE DES CHATONS.";
+send($sock, $myIP);
+sleep(1);
+send($sock, $TTL);
+sleep(1);
 send($sock, $message);
-$message = receive($sock);
-echo $message;
-sleep(30);
-}
-socket_close($sock);
+sleep(1);
 ?>
