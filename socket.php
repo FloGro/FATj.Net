@@ -73,8 +73,8 @@ function transitfile($ipAddress, $ipdest ,$output, $output1)
 function transitfilec($ipAddress, $output1, $output)
     {
     $sock = connect($ipAddress);
-//socket_write($sock, $output1, strlen ($output1)) or die("Could not write ttl\n");
-  //       sleep(1);
+socket_write($sock, "FIN", strlen ("FIN")) or die("Could not write ttl\n");
+        sleep(1);
     socket_write($sock, $output, strlen ($output)) or die("Could not write ou\n");
 
         socket_close($sock);

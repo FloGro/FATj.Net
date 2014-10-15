@@ -31,7 +31,12 @@
             
         }
          $connect = socket_read($client, 1024) or die("Could not read input\n");
-        if ($connect != "CO")
+        if ($connect == "FIN")
+        {
+            $msg = socket_read($client, 1024) or die("Could not read input\n");
+        echo "MESSAGE RETOUR :" . $msg . "\n";
+        }
+        else if ($connect != "CO")
         {
             if (testConnect($address) == false && in_array($address,$ipservers)){
                 unset($ipservers[array_search($address,$ipservers)]);
@@ -56,11 +61,12 @@
 	if ($output1 <= "0")
 {
         transitfilec($output2, $output1, $output);
-} else {
-        $nb = rand(0, sizeof($ipservers));
+}
+    else {
+        $nb = rand(0, (sizeof($ipservers) - 1));
         while ($ipservers[$nb] == $ip)
         {
-            $nb = rand(0, sizeof($ipservers));
+            $nb = rand(0, (sizeof($ipservers) - 1));
         }
         
    sleep(1);
