@@ -57,9 +57,13 @@
             $output = $input;
             $output1 = $ttl;
             $output2 = $destip;
-            if ($output1 <= "0")
+            if ($output1 <= "0" && $output2 != $ip)
             {
                 transitfilec($output2, $output1, $output);
+            }
+            else if ($output2 == $ip)
+            {
+                echo "MESSAGE RETOUR :" . $output . "\n";
             }
             else {
                 $nb = rand(0, (sizeof($ipservers) - 1));

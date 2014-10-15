@@ -70,7 +70,7 @@ function quit($barr, $window, $event)&#13;
 	<key>Main script</key>
 	<string>main</string>
 	<key>Splitter position</key>
-	<integer>161</integer>
+	<integer>162</integer>
 	<key>Support URL</key>
 	<string></string>
 	<key>Use resource fork</key>
@@ -82,6 +82,6 @@ function quit($barr, $window, $event)&#13;
 	<key>Window width</key>
 	<integer>850</integer>
 	<key>Window height</key>
-	<integer>553</integer>
+	<integer>554</integer>
 </dict>
 </plist>
