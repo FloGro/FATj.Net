@@ -61,7 +61,7 @@
             {
                 transitfilec($output2, $output1, $output);
             }
-            else if ($output2 == $ip)
+            else if ($output1 <= "0" && $output2 == $ip)
             {
                 echo "MESSAGE RETOUR :" . $output . "\n";
             }
