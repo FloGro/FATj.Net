@@ -1,10 +1,3 @@
-#!/usr/bin/env php
-Socket created 
-Socket bind OK 
-Socket listen OK 
-Waiting for incoming connections... 
-^C
-grogne_f@vm003:~$ cat liveserver.php
 <?php
     include_once('socket.php');
     include_once('myip.php');
