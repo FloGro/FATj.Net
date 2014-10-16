@@ -10,7 +10,7 @@ $TTL = '67';
 $message = ["Premier paquet","Deuxieme pacquet","Troisieme paquet","Quatrieme paquet"];
 
 for($i = 0; $i < sizeof($message); $i++) {
-       $server = $netList[rand(0, sizeof($netList))];
+       $server = $netList[rand(0, sizeof($netList) - 1)];
        $sock = connect($server);
        sleep(1);
        send($sock, $finalDestination);
