@@ -10,7 +10,7 @@
 //
 //Ces fonctions sont chargées de reconstruire, de vérifier et de déchiffrer les paquets.
 //
-
+require_once('checkSum.php');
 //function de réasossation des paquets
 function file_builder($fileUnBuild)
 {
