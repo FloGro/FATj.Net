@@ -6,7 +6,7 @@
 // Login   <raffin_j@etna-alternance.net>
 // 
 // Started on  Mon Oct 13 14:36:04 2014 Jean-Baptiste RAFFIN
-// Last update Thu Oct 16 17:39:55 2014 Jean-Baptiste RAFFIN
+// Last update Thu Oct 16 18:52:01 2014 Jean-Baptiste RAFFIN
 //
 //Ces fonctions sont chargées de découper et de chiffrer le fichier d'origine, elles sont ainsi découpé en paquet.
 //La fonction fileRaid appelle également la fonction checkSum dans le fichier chekSum.php de facon à creer un sum de deux paquets.
@@ -15,11 +15,7 @@ require_once('checkSum.php');
 require_once('fileBuilder.php');
 
 $fileCut = file_reader($argv[1], $argv[2]);
-unset($fileCut[4]);
-unset($fileCut[5]);
-sort($fileCut);
 $fileBuild = file_builder($fileCut);
-file_decrypt($fileBuild, $argv[2], $argv[1]);
 
 //Lecture du fichier et chiffrement
 function file_reader($file, $password)

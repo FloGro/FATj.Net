@@ -6,7 +6,7 @@
 // Login   <raffin_j@etna-alternance.net>
 // 
 // Started on  Thu Oct 16 09:39:08 2014 Jean-Baptiste RAFFIN
-// Last update Thu Oct 16 17:36:04 2014 Jean-Baptiste RAFFIN
+// Last update Thu Oct 16 18:48:34 2014 Jean-Baptiste RAFFIN
 //
 //Ces fonctions sont chargées de reconstruire, de vérifier et de déchiffrer les paquets.
 //
@@ -30,28 +30,32 @@ function file_builder($fileUnBuild)
     for ($i = 0 ; $fileSearch[$i] != NULL ; $i++)
         $fileEncrypted .= $fileSearch[$i];
 
-    return($fileEncrypted);
+    file_decrypt($fileEncrypted);
+//    return($fileEncrypted);
 }
 
 //foncton de déchiffrage et de comparaison avec l'ancien fichier
-function file_decrypt($fileEncrypted, $password, $oldFile)
+function file_decrypt($fileEncrypted)
 {
+    echo "Veuillez entrer le mot de passe:\n";
+    $password = trim(fgets(STDIN));
+    echo $password;
     $fileDecrypt = openssl_decrypt($fileEncrypted, 'aes128', $password);
-    $fileOpen = fopen($oldFile, 'r');
+    // $fileOpen = fopen($oldFile, 'r');
 
     if ($fileDecrypt == NULL)
         echo "error: Cannot decrypt file\n";
-    if ((bool) $fileOpen == FALSE || filesize($oldFile) == 0)
-        echo "content.php: $argv: Cannot open file\n";
-    else
-        {
-            $OldFileRead = fread($fileOpen, filesize($oldFile));
+//    if ((bool) $fileOpen == FALSE || filesize($oldFile) == 0)
+    //      echo "content.php: $argv: Cannot open file\n";
+    // else
+    //  {
+            //$OldFileRead = fread($fileOpen, filesize($oldFile));
 //            $FilesDiff = xdiff_string_diff($OldFileRead);
-            $percentDiff = strlen($fileDecrypt) / strlen($OldFileRead) * 100;
-            echo "Concordance de ".$percentDiff."% entre l'original et la copie.\n\n";
-        }
+            //$percentDiff = strlen($fileDecrypt) / strlen($OldFileRead) * 100;
+            //echo "Concordance de ".$percentDiff."% entre l'original et la copie.\n\n";
+    //  }
 
-    fclose($fileOpen);
+    //fclose($fileOpen);
     echo $fileDecrypt;
 }
 
@@ -67,7 +71,27 @@ function file_checker($file, $fileUnBuild)
                     $raid[$var] = $fileTmp[0];
                 }
         }
+    $file = file_restaured($file, $raid);
     for ($i = 0 ; $i < 8 ; $i++)
+        {
+            echo $i;
+            if ($file[$i] == "")
+                {
+                    if ($file[$i - 1] == "")
+                        $file[$i] .= $file[$i + 1];
+                    else
+                        $file[$i] = $file[$i - 1];
+                }
+        }
+    var_dump($file);
+    return($file);
+}
+
+//fonction de restauration
+function file_restaured($file, $raid)
+{
+    var_dump($file);
+   for ($i = 0 ; $i < 8 ; $i++)
         {
             if(!isset($file[$i]))
                 {
@@ -86,5 +110,5 @@ function file_checker($file, $fileUnBuild)
                     $file[$i] = $restaured;
                 }
         }
-    return($file);
+   return($file);
 }
