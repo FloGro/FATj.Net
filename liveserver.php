@@ -95,7 +95,7 @@
 	if ($firstBorn == true)
 	   $ttlMax--;
 	if ($ttlMax <= 0 && $ttlMax != NULL)
-	   file_builder($fileBuild);
+	   file_builder($fileUnbuild);
 	sleep(1);
 }
 socket_close($client);
