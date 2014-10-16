@@ -8,12 +8,3 @@ exitItem = fileItem.addItem('Exit', function() {
 
 menu.appendItem(fileItem);
 Ti.UI.setMenu(menu);
-
-function startScript(){
-	var res = location.search();
-	alert(res);
-
-/*	var tmp = document.getElementById("frm1").value;
-	document.getElementById("demo").innerHTML = tmp;
-*/
-}
