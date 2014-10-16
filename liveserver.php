@@ -38,7 +38,7 @@
                 continue 1;
 	    array_push($fileUnbuild, $msg);
 	    $firstBorn = true;
-            //echo "MESSAGE RETOUR :" . $msg . "\n";
+            echo "MESSAGE RETOUR :" . $msg . "\n";
         }
         else if ($connect != "CO")
         {
@@ -67,7 +67,7 @@
             {
 		array_push($fileUnbuild, $output);
 		$firstBorn = true;
-                //echo "\n\nMESSAGE RETOUR :" . $output . "\n\n";
+                echo "\n\nMESSAGE RETOUR :" . $output . "\n\n";
             }
             else {
                 $nb = rand(0, (sizeof($ipservers) - 1));
