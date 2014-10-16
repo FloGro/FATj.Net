@@ -11,7 +11,7 @@ $finalDestination = "192.168.118.4";
 //$TTL = $argv[1];
 $TTL = '67';
 //$message = file_reader($argv[1], $argv[2]);
-$message = ['Paquet','Paquet'];
+$message = ['Paquet1','Paquet2'];
 
 for($i = 0; $i < sizeof($message); $i++) {
        $server = $netList[rand(0, sizeof($netList) - 1)];
