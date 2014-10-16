@@ -11,11 +11,11 @@
 //Ces fonctions sont chargées de découper et de chiffrer le fichier d'origine, elles sont ainsi découpé en paquet.
 //La fonction fileRaid appelle également la fonction checkSum dans le fichier chekSum.php de facon à creer un sum de deux paquets.
 
-//require_once('checkSum.php');
-//require_once('fileBuilder.php');
+require_once('checkSum.php');
+require_once('fileBuilder.php');
 
-$fileCut = file_reader($argv[1], $argv[2]);
-$fileBuild = file_builder($fileCut);
+//$fileCut = file_reader($argv[1], $argv[2]);
+//$fileBuild = file_builder($fileCut);
 
 //Lecture du fichier et chiffrement
 function file_reader($file, $password)
