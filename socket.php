@@ -59,22 +59,22 @@ function connectserver($ipAddress) {
     return ($sock);
 }
 
-function transitfile($ipAddress, $ipdest ,$output, $output1)
+function transitfileTEST($ipAddress, $ipdest ,$output, $output1)
     {
     $sock = connect($ipAddress);
           socket_write($sock, $ipdest, strlen ($ipdest)) or die("Could not write output\n");
-usleep(5);
+usleep(10000);
         socket_write($sock, $output, strlen ($output)) or die("Could not write output\n");
-usleep(5);
+usleep(10000);
         socket_write($sock, $output1, strlen ($output1)) or die("Could not write ttl output\n");
  
         socket_close($sock);
     }
-function transitfilec($ipAddress, $output1, $output)
+function transitfileTEST1($ipAddress, $output1, $output)
     {
     $sock = connect($ipAddress);
 socket_write($sock, "FIN", strlen ("FIN")) or die("Could not write ttl\n");
-usleep(5);
+usleep(10000);
         socket_write($sock, $output, strlen ($output)) or die("Could not write ou\n");
         socket_close($sock);
     }    

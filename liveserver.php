@@ -31,11 +31,16 @@
             }
             
         }
-        $connect = socket_read($client, 1024) or die("Could not read CONNECT\n");
+        $connect = @socket_read($client, 1024);
+        if ($connect == false)
+            continue;
         if ($connect == "FIN")
         {
-            usleep(5);
-            $msg = socket_read($client, 1024) or die("Could not read MESG\n");
+            usleep(10000);
+            $msg = @socket_read($client, 1024);
+            if ($msg == false)
+                continue 2;
+
             echo "MESSAGE RETOUR :" . $msg . "\n";
         }
         else if ($connect != "CO")
@@ -44,10 +49,14 @@
             
             $destip = $connect;
             echo $destip;
-            $ttl = socket_read($client, 1024) or die("Could not read input\n");
+            $ttl = @socket_read($client, 1024);
+            if ($ttl == false)
+                continue 2;
             echo $ttl;
             $ttl = $ttl - 1;
-            $input = socket_read($client, 1024) or die("Could not read input\n");
+            $input = @socket_read($client, 1024);
+            if ($input == false)
+                continue 2;
             // clean up input string
             $input = trim($input);
             echo "Client Message : ".$input."\n";
@@ -57,11 +66,12 @@
             $output2 = $destip;
             if ($output1 <= "0" && $output2 != $ip)
             {
-                transitfilec($output2, $output1, $output);
+             //   transitfilec($output2, $output);
+            exec("php transitfin.php $output2 '$output' > /dev/null 2>&1 &");
             }
             else if ($output1 <= "0" && $output2 == $ip)
             {
-                echo "MESSAGE RETOUR :" . $output . "\n";
+                echo "\n\nMESSAGE RETOUR :" . $output . "\n\n";
             }
             else {
                 $nb = rand(0, (sizeof($ipservers) - 1));
@@ -78,11 +88,13 @@
                    $nb = rand(0, (sizeof($ipservers) - 1));
                 }
                 echo "CONNEXION " . $ipservers[$nb] . "\n";
-                usleep(5);
-                transitfile($ipservers[$nb], $output2 ,$output1, $output);
+                usleep(10000);
+                echo "$ipservers[$nb] $output2 $output1 $output";
+                exec("php transitfile.php $ipservers[$nb] $output2 $output1 '$output' > /dev/null 2>&1 &");
+                //transitfile($ipservers[$nb], $output2 ,$output1, $output);
             }
         }
-usleep(5);
+usleep(10000);
         
     }
     socket_close($client);
