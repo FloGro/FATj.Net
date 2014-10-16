@@ -51,12 +51,12 @@
             echo $destip;
             $ttl = @socket_read($client, 1024);
             if ($ttl == false)
-                continue 2;
+                continue 1;
             echo $ttl;
             $ttl = $ttl - 1;
             $input = @socket_read($client, 1024);
             if ($input == false)
-                continue 2;
+                continue 1;
             // clean up input string
             $input = trim($input);
             echo "Client Message : ".$input."\n";
