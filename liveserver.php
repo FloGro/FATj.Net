@@ -83,7 +83,7 @@
                    }
                    $nb = rand(0, (sizeof($ipservers) - 1));
                 }
-                //echo "CONNEXION " . $ipservers[$nb] . "\n";
+                echo "CONNEXION " . $ipservers[$nb] . "\n";
                 usleep(10000);
                 //echo "$ipservers[$nb] $output2 $output1 $output";
 		if ($ttlMax == -100)
